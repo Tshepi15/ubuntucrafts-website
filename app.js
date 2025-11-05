@@ -2,40 +2,48 @@
 // Example: https://abc123.execute-api.us-east-1.amazonaws.com/prod/products
 const API_URL = 'https://a27id2atvb.execute-api.eu-north-1.amazonaws.com/prod/products';
 
-// Product data with images and descriptions
+// Product data with real African craft images
 const productData = {
-    1: { description: 'Handcrafted pottery made by local artisans using traditional techniques and natural clay.', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop' },
+    1: { description: 'Handcrafted pottery made by local artisans using traditional techniques and natural clay.', image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&h=400&fit=crop' },
     2: { description: 'Beautiful woven baskets crafted from indigenous materials by skilled community artisans.', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop' },
     3: { description: 'Traditional African clothing featuring authentic patterns and locally sourced fabrics.', image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop' },
     4: { description: 'Organic skincare products made from indigenous plants and natural ingredients.', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop' },
-    5: { description: 'Hand-carved wooden sculptures showcasing traditional African artistry.', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop' },
+    5: { description: 'Hand-carved wooden sculptures showcasing traditional African artistry.', image: 'https://images.unsplash.com/photo-1544967882-6abec37be2b4?w=400&h=400&fit=crop' },
     6: { description: 'Colorful beaded jewelry made by local women artisans.', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop' },
     7: { description: 'Traditional clay pots perfect for cooking and storage.', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop' },
-    8: { description: 'Handwoven textiles with authentic African patterns.', image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop' },
+    8: { description: 'Handwoven textiles with authentic African patterns.', image: 'https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=400&h=400&fit=crop' },
     9: { description: 'Natural soap bars made with organic ingredients.', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop' },
     10: { description: 'Decorative wall hangings featuring traditional designs.', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop' },
-    11: { description: 'Hand-painted ceramic bowls for dining and decoration.', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop' },
-    12: { description: 'Traditional African masks carved from local wood.', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop' },
+    11: { description: 'Hand-painted ceramic bowls for dining and decoration.', image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&h=400&fit=crop' },
+    12: { description: 'Traditional African masks carved from local wood.', image: 'https://images.unsplash.com/photo-1544967882-6abec37be2b4?w=400&h=400&fit=crop' },
     13: { description: 'Organic body oils infused with indigenous herbs.', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop' },
-    14: { description: 'Woven placemats perfect for traditional dining.', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop' },
+    14: { description: 'Woven placemats perfect for traditional dining.', image: 'https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=400&h=400&fit=crop' },
     15: { description: 'Handcrafted leather bags with traditional patterns.', image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop' },
     16: { description: 'Natural face creams made from aloe and shea butter.', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop' },
-    17: { description: 'Decorative pottery vases with unique glazing.', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop' },
-    18: { description: 'Traditional headwraps in vibrant colors.', image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop' },
-    19: { description: 'Hand-carved wooden spoons and utensils.', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop' },
+    17: { description: 'Decorative pottery vases with unique glazing.', image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&h=400&fit=crop' },
+    18: { description: 'Traditional headwraps in vibrant colors.', image: 'https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=400&h=400&fit=crop' },
+    19: { description: 'Hand-carved wooden spoons and utensils.', image: 'https://images.unsplash.com/photo-1544967882-6abec37be2b4?w=400&h=400&fit=crop' },
     20: { description: 'Beaded bracelets with traditional significance.', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop' },
     21: { description: 'Organic lip balms made from natural beeswax.', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop' },
     22: { description: 'Woven storage baskets in various sizes.', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop' },
-    23: { description: 'Traditional African drums handcrafted by artisans.', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop' },
-    24: { description: 'Embroidered cushion covers with ethnic designs.', image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop' },
+    23: { description: 'Traditional African drums handcrafted by artisans.', image: 'https://images.unsplash.com/photo-1544967882-6abec37be2b4?w=400&h=400&fit=crop' },
+    24: { description: 'Embroidered cushion covers with ethnic designs.', image: 'https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=400&h=400&fit=crop' },
     25: { description: 'Natural hair oils for traditional hair care.', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop' },
-    26: { description: 'Hand-painted ceramic tiles for decoration.', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop' },
+    26: { description: 'Hand-painted ceramic tiles for decoration.', image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&h=400&fit=crop' },
     27: { description: 'Traditional African sandals made from leather.', image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop' },
-    28: { description: 'Woven table runners with geometric patterns.', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop' },
+    28: { description: 'Woven table runners with geometric patterns.', image: 'https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=400&h=400&fit=crop' },
     29: { description: 'Handcrafted candles with natural fragrances.', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop' },
-    30: { description: 'Traditional clay water jugs for cooling.', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop' },
+    30: { description: 'Traditional clay water jugs for cooling.', image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&h=400&fit=crop' },
     31: { description: 'Beaded necklaces with cultural significance.', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop' },
-    32: { description: 'Hand-woven blankets for warmth and comfort.', image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop' }
+    32: { description: 'Hand-woven blankets for warmth and comfort.', image: 'https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=400&h=400&fit=crop' },
+    33: { description: 'Ceramic dinner plates with traditional motifs.', image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&h=400&fit=crop' },
+    34: { description: 'Handwoven grass mats for outdoor use.', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop' },
+    35: { description: 'Traditional African print fabrics by the yard.', image: 'https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=400&h=400&fit=crop' },
+    36: { description: 'Hand-carved wooden bowls for serving.', image: 'https://images.unsplash.com/photo-1544967882-6abec37be2b4?w=400&h=400&fit=crop' },
+    37: { description: 'Natural shea butter moisturizers.', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop' },
+    38: { description: 'Decorative clay figurines and sculptures.', image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&h=400&fit=crop' },
+    39: { description: 'Traditional African earrings with beadwork.', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop' },
+    40: { description: 'Handmade leather wallets with ethnic designs.', image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop' }
 };
 
 function formatCurrency(value) {
@@ -65,7 +73,7 @@ async function loadProducts() {
         products.forEach(product => {
             const productInfo = productData[product.id] || {
                 description: 'Authentic handcrafted product made by local artisans.',
-                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop'
+                image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&h=400&fit=crop'
             };
             
             const productCard = document.createElement('div');
@@ -123,7 +131,15 @@ async function loadProducts() {
             {id: 29, name: 'Scented Candle', price: 65.99},
             {id: 30, name: 'Clay Water Jug', price: 109.99},
             {id: 31, name: 'Beaded Necklace', price: 95.99},
-            {id: 32, name: 'Woven Blanket', price: 329.99}
+            {id: 32, name: 'Woven Blanket', price: 329.99},
+            {id: 33, name: 'Ceramic Dinner Plates', price: 179.99},
+            {id: 34, name: 'Grass Mats', price: 89.99},
+            {id: 35, name: 'African Print Fabric', price: 29.99},
+            {id: 36, name: 'Wooden Serving Bowl', price: 159.99},
+            {id: 37, name: 'Shea Butter Moisturizer', price: 75.99},
+            {id: 38, name: 'Clay Figurines', price: 129.99},
+            {id: 39, name: 'Traditional Earrings', price: 49.99},
+            {id: 40, name: 'Leather Wallet', price: 119.99}
         ];
         
         sampleProducts.forEach(product => {
