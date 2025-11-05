@@ -2,6 +2,50 @@
 // Example: https://abc123.execute-api.us-east-1.amazonaws.com/prod/products
 const API_URL = 'https://a27id2atvb.execute-api.eu-north-1.amazonaws.com/prod/products';
 
+// All 40 products data
+const allProducts = [
+    {id: 1, name: 'Handcrafted Pottery', price: 299.99},
+    {id: 2, name: 'Woven Basket', price: 149.99},
+    {id: 3, name: 'Traditional Clothing', price: 459.99},
+    {id: 4, name: 'Organic Skincare', price: 89.99},
+    {id: 5, name: 'Wooden Sculpture', price: 399.99},
+    {id: 6, name: 'Beaded Jewelry', price: 79.99},
+    {id: 7, name: 'Clay Cooking Pot', price: 199.99},
+    {id: 8, name: 'Handwoven Textile', price: 249.99},
+    {id: 9, name: 'Natural Soap Bar', price: 45.99},
+    {id: 10, name: 'Wall Hanging', price: 179.99},
+    {id: 11, name: 'Ceramic Bowl', price: 129.99},
+    {id: 12, name: 'African Mask', price: 349.99},
+    {id: 13, name: 'Body Oil', price: 69.99},
+    {id: 14, name: 'Woven Placemat', price: 39.99},
+    {id: 15, name: 'Leather Bag', price: 279.99},
+    {id: 16, name: 'Face Cream', price: 99.99},
+    {id: 17, name: 'Pottery Vase', price: 189.99},
+    {id: 18, name: 'Traditional Headwrap', price: 59.99},
+    {id: 19, name: 'Wooden Utensils', price: 49.99},
+    {id: 20, name: 'Beaded Bracelet', price: 35.99},
+    {id: 21, name: 'Lip Balm', price: 25.99},
+    {id: 22, name: 'Storage Basket', price: 119.99},
+    {id: 23, name: 'African Drum', price: 449.99},
+    {id: 24, name: 'Cushion Cover', price: 79.99},
+    {id: 25, name: 'Hair Oil', price: 55.99},
+    {id: 26, name: 'Ceramic Tiles', price: 159.99},
+    {id: 27, name: 'Leather Sandals', price: 139.99},
+    {id: 28, name: 'Table Runner', price: 89.99},
+    {id: 29, name: 'Scented Candle', price: 65.99},
+    {id: 30, name: 'Clay Water Jug', price: 109.99},
+    {id: 31, name: 'Beaded Necklace', price: 95.99},
+    {id: 32, name: 'Woven Blanket', price: 329.99},
+    {id: 33, name: 'Ceramic Dinner Plates', price: 179.99},
+    {id: 34, name: 'Grass Mats', price: 89.99},
+    {id: 35, name: 'African Print Fabric', price: 29.99},
+    {id: 36, name: 'Wooden Serving Bowl', price: 159.99},
+    {id: 37, name: 'Shea Butter Moisturizer', price: 75.99},
+    {id: 38, name: 'Clay Figurines', price: 129.99},
+    {id: 39, name: 'Traditional Earrings', price: 49.99},
+    {id: 40, name: 'Leather Wallet', price: 119.99}
+];
+
 // Product data with authentic African craft images
 const productData = {
     1: { description: 'Handcrafted pottery made by local artisans using traditional techniques and natural clay.', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop&auto=format' },
@@ -56,114 +100,33 @@ async function loadProducts() {
     
     statusEl.textContent = 'Loading products…';
     
-    try {
-        const resp = await fetch(API_URL, { method: 'GET' });
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    // Always show all 40 products
+    statusEl.textContent = `Found ${allProducts.length} product(s).`;
+    container.innerHTML = '';
+    
+    allProducts.forEach(product => {
+        const productInfo = productData[product.id] || {
+            description: 'Authentic handcrafted product made by local artisans.',
+            image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&h=400&fit=crop&auto=format'
+        };
         
-        const products = await resp.json();
-        container.innerHTML = '';
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
         
-        if (!Array.isArray(products) || products.length === 0) {
-            statusEl.textContent = 'No products found.';
-            return;
-        }
+        productCard.innerHTML = `
+            <div class="product-image">
+                <img src="${productInfo.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+            </div>
+            <h3>${product.name}</h3>
+            <p class="price">${formatCurrency(product.price)}</p>
+            <p class="product-description">${productInfo.description}</p>
+            <button class="buy-btn" onclick="buyProduct('${product.name}')">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+            </button>
+        `;
         
-        statusEl.textContent = `Found ${products.length} product(s).`;
-        
-        products.forEach(product => {
-            const productInfo = productData[product.id] || {
-                description: 'Authentic handcrafted product made by local artisans.',
-                image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&h=400&fit=crop&auto=format'
-            };
-            
-            const productCard = document.createElement('div');
-            productCard.className = 'product-card';
-            
-            productCard.innerHTML = `
-                <div class="product-image">
-                    <img src="${productInfo.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
-                </div>
-                <h3>${product.name || 'Unnamed product'}</h3>
-                <p class="price">${formatCurrency(product.price ?? 0)}</p>
-                <p class="product-description">${productInfo.description}</p>
-                <button class="buy-btn" onclick="buyProduct('${product.name}')">
-                    <i class="fas fa-shopping-cart"></i> Add to Cart
-                </button>
-            `;
-            
-            container.appendChild(productCard);
-        });
-        
-    } catch (err) {
-        // If API fails, show sample products with images
-        statusEl.textContent = 'Showing sample products';
-        container.innerHTML = '';
-        
-        const sampleProducts = [
-            {id: 1, name: 'Handcrafted Pottery', price: 299.99},
-            {id: 2, name: 'Woven Basket', price: 149.99},
-            {id: 3, name: 'Traditional Clothing', price: 459.99},
-            {id: 4, name: 'Organic Skincare', price: 89.99},
-            {id: 5, name: 'Wooden Sculpture', price: 399.99},
-            {id: 6, name: 'Beaded Jewelry', price: 79.99},
-            {id: 7, name: 'Clay Cooking Pot', price: 199.99},
-            {id: 8, name: 'Handwoven Textile', price: 249.99},
-            {id: 9, name: 'Natural Soap Bar', price: 45.99},
-            {id: 10, name: 'Wall Hanging', price: 179.99},
-            {id: 11, name: 'Ceramic Bowl', price: 129.99},
-            {id: 12, name: 'African Mask', price: 349.99},
-            {id: 13, name: 'Body Oil', price: 69.99},
-            {id: 14, name: 'Woven Placemat', price: 39.99},
-            {id: 15, name: 'Leather Bag', price: 279.99},
-            {id: 16, name: 'Face Cream', price: 99.99},
-            {id: 17, name: 'Pottery Vase', price: 189.99},
-            {id: 18, name: 'Traditional Headwrap', price: 59.99},
-            {id: 19, name: 'Wooden Utensils', price: 49.99},
-            {id: 20, name: 'Beaded Bracelet', price: 35.99},
-            {id: 21, name: 'Lip Balm', price: 25.99},
-            {id: 22, name: 'Storage Basket', price: 119.99},
-            {id: 23, name: 'African Drum', price: 449.99},
-            {id: 24, name: 'Cushion Cover', price: 79.99},
-            {id: 25, name: 'Hair Oil', price: 55.99},
-            {id: 26, name: 'Ceramic Tiles', price: 159.99},
-            {id: 27, name: 'Leather Sandals', price: 139.99},
-            {id: 28, name: 'Table Runner', price: 89.99},
-            {id: 29, name: 'Scented Candle', price: 65.99},
-            {id: 30, name: 'Clay Water Jug', price: 109.99},
-            {id: 31, name: 'Beaded Necklace', price: 95.99},
-            {id: 32, name: 'Woven Blanket', price: 329.99},
-            {id: 33, name: 'Ceramic Dinner Plates', price: 179.99},
-            {id: 34, name: 'Grass Mats', price: 89.99},
-            {id: 35, name: 'African Print Fabric', price: 29.99},
-            {id: 36, name: 'Wooden Serving Bowl', price: 159.99},
-            {id: 37, name: 'Shea Butter Moisturizer', price: 75.99},
-            {id: 38, name: 'Clay Figurines', price: 129.99},
-            {id: 39, name: 'Traditional Earrings', price: 49.99},
-            {id: 40, name: 'Leather Wallet', price: 119.99}
-        ];
-        
-        sampleProducts.forEach(product => {
-            const productInfo = productData[product.id];
-            const productCard = document.createElement('div');
-            productCard.className = 'product-card';
-            
-            productCard.innerHTML = `
-                <div class="product-image">
-                    <img src="${productInfo.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
-                </div>
-                <h3>${product.name}</h3>
-                <p class="price">${formatCurrency(product.price)}</p>
-                <p class="product-description">${productInfo.description}</p>
-                <button class="buy-btn" onclick="buyProduct('${product.name}')">
-                    <i class="fas fa-shopping-cart"></i> Add to Cart
-                </button>
-            `;
-            
-            container.appendChild(productCard);
-        });
-        
-        console.error('Error fetching products:', err);
-    }
+        container.appendChild(productCard);
+    });
 }
 
 function buyProduct(productName) {
