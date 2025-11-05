@@ -1,0 +1,9 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="300" fill="#2c3e50"/>
+  <rect x="50" y="80" width="200" height="140" rx="10" fill="#34495e"/>
+  <rect x="60" y="90" width="180" height="120" rx="5" fill="#7f8c8d"/>
+  <rect x="70" y="100" width="160" height="100" rx="3" fill="#95a5a6"/>
+  <circle cx="150" cy="150" r="15" fill="#2c3e50"/>
+  <rect x="130" y="60" width="40" height="20" rx="10" fill="#34495e"/>
+  <text x="150" y="250" text-anchor="middle" fill="white" font-family="Arial" font-size="16">Laptop Bag</text>
+</svg>

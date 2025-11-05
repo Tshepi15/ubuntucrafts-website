@@ -1,0 +1,17 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="300" fill="#e67e22"/>
+  <rect x="50" y="140" width="200" height="20" rx="10" fill="#2c3e50"/>
+  <rect x="40" y="130" width="30" height="40" rx="5" fill="#34495e"/>
+  <rect x="230" y="130" width="30" height="40" rx="5" fill="#34495e"/>
+  <rect x="45" y="135" width="20" height="30" fill="#7f8c8d"/>
+  <rect x="235" y="135" width="20" height="30" fill="#7f8c8d"/>
+  <circle cx="80" cy="150" r="3" fill="#95a5a6"/>
+  <circle cx="100" cy="150" r="3" fill="#95a5a6"/>
+  <circle cx="120" cy="150" r="3" fill="#95a5a6"/>
+  <circle cx="140" cy="150" r="3" fill="#95a5a6"/>
+  <circle cx="160" cy="150" r="3" fill="#95a5a6"/>
+  <circle cx="180" cy="150" r="3" fill="#95a5a6"/>
+  <circle cx="200" cy="150" r="3" fill="#95a5a6"/>
+  <circle cx="220" cy="150" r="3" fill="#95a5a6"/>
+  <text x="150" y="250" text-anchor="middle" fill="white" font-family="Arial" font-size="16">USB Cable</text>
+</svg>
