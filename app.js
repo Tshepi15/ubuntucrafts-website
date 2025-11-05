@@ -5,19 +5,19 @@ const API_URL = 'https://a27id2atvb.execute-api.eu-north-1.amazonaws.com/prod/pr
 // Product data with images and descriptions
 const productData = {
     1: {
-        icon: 'fas fa-briefcase',
-        description: 'Professional laptop bag with padded compartments and water-resistant material.',
-        image: 'images/laptop-bag.svg'
+        icon: 'fas fa-vase',
+        description: 'Handcrafted pottery made by local artisans using traditional techniques and natural clay.',
+        image: 'images/pottery.svg'
     },
     2: {
-        icon: 'fas fa-mouse',
-        description: 'Ergonomic wireless mouse with precision tracking and long battery life.',
-        image: 'images/wireless-mouse.svg'
+        icon: 'fas fa-shopping-basket',
+        description: 'Beautiful woven baskets crafted from indigenous materials by skilled community artisans.',
+        image: 'images/basket.svg'
     },
     3: {
-        icon: 'fas fa-usb',
-        description: 'High-speed USB cable with durable braided design and fast charging.',
-        image: 'images/usb-cable.svg'
+        icon: 'fas fa-tshirt',
+        description: 'Traditional African clothing featuring authentic patterns and locally sourced fabrics.',
+        image: 'images/clothing.svg'
     }
 };
 
@@ -76,9 +76,9 @@ async function loadProducts() {
         container.innerHTML = '';
         
         const sampleProducts = [
-            {id: 1, name: 'Laptop Bag', price: 499.99},
-            {id: 2, name: 'Wireless Mouse', price: 199.99},
-            {id: 3, name: 'USB Cable', price: 59.99}
+            {id: 1, name: 'Handcrafted Pottery', price: 299.99},
+            {id: 2, name: 'Woven Basket', price: 149.99},
+            {id: 3, name: 'Traditional Clothing', price: 459.99}
         ];
         
         sampleProducts.forEach(product => {
@@ -110,7 +110,7 @@ function buyProduct(productName) {
     
 This is a demo website. In a real store, this would add the item to your cart.
     
-Contact us at info@skytechcreations.com to place an order.`);
+Contact us at info@ubuntucrafts.co.za to place an order.`);
 }
 
 // Smooth scrolling for navigation links
